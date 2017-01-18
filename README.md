@@ -1,6 +1,15 @@
-# AirQualityToday
+# Air Quality Today
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
+Air Quality Today is an Angular 2 application that that accesses air quality measurements directly from the Environmental Protection Agency.
+
+Just enter your 5-digit zip code to retrieve the most recent air quality reading for your location. A map is displayed showing the location of the closest observation station.
+
+The app is currently deployed on [Heroku] (https://air-quality-today-0100.herokuapp.com).
+
+This app was originally an [Android app] (https://play.google.com/store/apps/details?id=com.programming4phone.air.quality) and was converted to Angular 2 to allow device independence.
+
+## Development stack
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24. The code base also uses Semantic UI 2.2 for styling HTML markup.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

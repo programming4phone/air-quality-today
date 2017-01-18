@@ -1,0 +1,31 @@
+
+<div class="cardMargin" *ngIf="airQuality">
+  <div class="ui card">
+    <div class="content">
+		<div class="header">Closest Monitoring Station</div>
+		<div class="description">
+			{{ airQuality.city }}, {{ airQuality.state }}
+		</div>
+		
+		<div class="cardMargin">
+			<div class="ui two column padded middle aligned centered color grid">
+				<div *ngIf="airQuality.ozoneAQI" class="{{ airQuality.ozoneClass }} aqiBorder" >
+					<div >Ozone</div>
+					<div >{{ airQuality.ozoneAQI | number:'1.0' }}</div>
+					<div >{{ airQuality.ozoneDescription }}</div>
+				</div>
+				<div *ngIf="airQuality.particulateMatterAQI" class="{{ airQuality.pmClass }} aqiBorder" >
+					<div>PM2.5</div>
+					<div>{{ airQuality.particulateMatterAQI | number:'1.0' }}</div>
+					<div>{{ airQuality.pmDescription }}</div>
+				</div>
+
+			</div>
+		</div>
+		<div>
+			<sebm-google-map [latitude]="airQuality.latitude" [longitude]="airQuality.longitude" [zoom]="14" >
+			<sebm-google-map-marker [latitude]="airQuality.latitude" [longitude]="airQuality.longitude"></sebm-google-map-marker>
+			</sebm-google-map>
+		</div>
+  </div>
+</div>

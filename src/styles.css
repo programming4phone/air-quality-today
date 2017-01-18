@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+@import './app/vendor/semantic.min.css';
+
+ .cardMargin {
+	margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-right: 1.0em;
+    margin-left: 1.0em;
+  }
+ 
+ .aqiBorder {
+	border-radius: 0.5em;
+  }

@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<h1>{{ title }}</h1>
+<div>
+	<div class="ui menu">
+		<a class="item" [routerLink]="['home']">Home</a>
+		<a class="item" [routerLink]="['defs']">Definitions</a>
+		<a class="item" [routerLink]="['about']">About Us</a>
+	</div>
+	<router-outlet></router-outlet>
+</div>
+
