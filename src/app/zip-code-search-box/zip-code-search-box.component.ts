@@ -20,6 +20,7 @@ export class ZipCodeSearchBoxComponent {
 	serverValidationError: boolean;
 	serverInternalError: boolean;
 	requiredValidationError: boolean;
+	readingUnavailableError: boolean;
 	results: EventEmitter<AirQuality> = new EventEmitter<AirQuality>();
 	
   constructor(fb: FormBuilder, http: Http) {
@@ -35,6 +36,7 @@ export class ZipCodeSearchBoxComponent {
 	this.serverValidationError = false;
 	this.serverInternalError = false;
 	this.requiredValidationError = false;
+	this.readingUnavailableError = false;
     let enteredZipCode : string = this.zipSearchFormGroup.controls['zipcode'].value;
 	if(enteredZipCode) {
 		let airNowUrl : string = `https://protected-wildwood-44798.herokuapp.com/zipCodeObservation/${enteredZipCode}`;
@@ -44,7 +46,12 @@ export class ZipCodeSearchBoxComponent {
 			.subscribe(
 				(results: any) => {
 					console.log('subscribe() results.value: ', results.value);
-					this.results.emit(results.value);
+					if(results.value.city){
+						this.results.emit(results.value);
+					}
+					else{
+						this.readingUnavailableError = true;
+					}
 					this.loading = false;
 				},
 				(err: any) => { // on error
