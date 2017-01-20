@@ -7,6 +7,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
+import { AirNowService } from './services/airnow.service';
+
 import { AppComponent } from './app.component';
 import { ZipCodeSearchBoxComponent } from './zip-code-search-box/zip-code-search-box.component';
 import { AirQualityResultsComponent } from './air-quality-results/air-quality-results.component';
@@ -40,7 +42,10 @@ const routes: Routes = [
       apiKey: 'AIzaSyDvcmGvinGgybxfb6CxlI-EfljbkiAUbew'
     })
   ],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  providers: [
+		{ provide: LocationStrategy, useClass: HashLocationStrategy }, 
+		{ provide: AirNowService, useClass: AirNowService }
+		],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

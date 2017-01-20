@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { AirQuality } from './air-quality-results.model';
 @Component({
 	inputs: ['airQuality'],
@@ -6,12 +6,9 @@ import { AirQuality } from './air-quality-results.model';
 	templateUrl: './air-quality-results.component.html',
 	styleUrls: ['./air-quality-results.component.css']
 })
-export class AirQualityResultsComponent implements OnInit {
+export class AirQualityResultsComponent {
 
 	airQuality: AirQuality;
 	
 	constructor() { }
-
-	ngOnInit() {}
-
 }

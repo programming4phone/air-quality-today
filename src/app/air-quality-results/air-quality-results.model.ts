@@ -51,7 +51,7 @@ export class AirQuality {
 			if(aqi < 301) return 'brown column padded middle aligned centered';
 			if(aqi > 300) return 'black column padded middle aligned centered';
 		}
-		return 'green column padded middle aligned centered';
+		return 'grey column padded middle aligned centered';
 	}
 
 	private ozoneAQIClass() : string{
@@ -71,7 +71,7 @@ export class AirQuality {
 			if(aqi < 301) return 'Very Unhealty';
 			if(aqi > 300) return 'Hazardous';
 		}
-		return 'Good';
+		return 'Unknown';
 	}
 	
 	private ozoneAQIDescription() : string{
