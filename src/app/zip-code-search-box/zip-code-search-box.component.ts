@@ -20,9 +20,10 @@ export class ZipCodeSearchBoxComponent {
 	requiredValidationError: boolean;
 	readingUnavailableError: boolean;
 	results: EventEmitter<AirQuality> = new EventEmitter<AirQuality>();
+	zipCodeRegex: RegExp;
 	
 	constructor(fb: FormBuilder, private airNowService: AirNowService) {
- 
+		this.zipCodeRegex = new RegExp('[0-9]{5}');
 		this.zipSearchFormGroup = fb.group({
 			'zipcode': ['']
 		});
@@ -39,37 +40,42 @@ export class ZipCodeSearchBoxComponent {
 		this.clearErrors();
 		let enteredZipCode : string = this.zipSearchFormGroup.controls['zipcode'].value;
 		if(enteredZipCode) {
-			let airNowUrl : string = `${ZipCodeSearchBoxComponent.BASE_URL}${enteredZipCode}`;
-			console.log('airNowUrl: ', airNowUrl);
-			this.loading = true;
-			this.airNowService.search(airNowUrl)
-				.subscribe(
-					(results: any) => {
-						console.log('subscribe() results.value: ', results.value);
-						if(results.value.city){
-							this.results.emit(results.value);
-						}
-						else{
-							this.readingUnavailableError = true;
+			if(this.zipCodeRegex.test(enteredZipCode)){
+				let airNowUrl : string = `${ZipCodeSearchBoxComponent.BASE_URL}${enteredZipCode}`;
+				console.log('airNowUrl: ', airNowUrl);
+				this.loading = true;
+				this.airNowService.search(airNowUrl)
+					.subscribe(
+						(results: any) => {
+							console.log('subscribe() results.value: ', results.value);
+							if(results.value.city){
+								this.results.emit(results.value);
+							}
+							else{
+								this.readingUnavailableError = true;
+								this.results.emit(null);
+							}
+							this.loading = false;
+						},
+						(err: any) => { // on error
+							console.log(err);
+							if(err == 400){
+								this.serverValidationError = true;
+							}
+							else{
+								this.serverInternalError = true;
+							}
 							this.results.emit(null);
+							this.loading = false;
+						},
+						() => { // on completion
+							this.loading = false;
 						}
-						this.loading = false;
-					},
-					(err: any) => { // on error
-						console.log(err);
-						if(err == 400){
-							this.serverValidationError = true;
-						}
-						else{
-							this.serverInternalError = true;
-						}
-						this.results.emit(null);
-						this.loading = false;
-					},
-					() => { // on completion
-						this.loading = false;
-					}
-				);
+					);
+			}
+			else{
+				this.serverValidationError = true;
+			}
 		}
 		else{
 			this.requiredValidationError = true;
