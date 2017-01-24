@@ -47,7 +47,7 @@ export class ZipCodeSearchBoxComponent {
 				this.airNowService.search(airNowUrl)
 					.subscribe(
 						(results: any) => {
-							console.log('subscribe() results.value: ', results.value);
+							console.log('ZipCodeSearchBoxComponent::onSubmit() subscribe results.value: ', results.value);
 							if(results.value.city){
 								this.results.emit(results.value);
 							}

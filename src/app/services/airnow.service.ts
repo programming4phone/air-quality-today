@@ -19,11 +19,12 @@ export class AirNowService{
 	
 	private extractData(res: Response): Observable<AirQuality>  {
 		/*
-			Be careful here. The JSON returned is a single object
+			Be careful here. 
+			If response status code = 200 the JSON returned is a single object fully populated.
+			If response status code != 200 the JSON returned is a single object which is empty.
 		*/
-		
-		this.data = res.json();
-		console.log('data: ', this.data);
+		//console.log('AirNowService::extractData() res: ', res);
+		this.data = res.json(); // if this fails then handleError will be invoked
 		return Observable.of(new AirQuality(
 					this.data.zipCode,
 					this.data.city,
@@ -35,6 +36,9 @@ export class AirNowService{
 				));
 	}
 	
+	/*
+	* Handle error extracting data from the response body
+	*/
 	private handleError (error: Response | any) {
 		let errStatus: number;
 		if (error instanceof Response) {
@@ -45,5 +49,4 @@ export class AirNowService{
 		}
 		return Observable.throw(errStatus);
 	}
-
 }
