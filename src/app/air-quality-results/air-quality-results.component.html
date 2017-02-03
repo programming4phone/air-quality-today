@@ -8,28 +8,41 @@
 		</div>
 		
 		<div class="cardMargin">
-			<div class="ui two column padded middle aligned centered color grid">
+
+			<div class="ui padded grid">
 				<div *ngIf="airQuality.ozoneAQI" class="{{ airQuality.ozoneClass }} aqiBorder" >
-					<div >Ozone</div>
-					<div >{{ airQuality.ozoneAQI | number:'1.0' }}</div>
-					<div >{{ airQuality.ozoneDescription }}</div>
+					<table>
+					<tr>
+						<td><span class="aqiNumber">{{ airQuality.ozoneAQI | number:'1.0' }}</span></td>
+						<td><div class="aqiTitle">Ozone</div><div class="aqiDescription">{{ airQuality.ozoneDescription }}</div></td>
+					</tr>
+					</table>
 				</div>
 				<div *ngIf="!airQuality.ozoneAQI" class="{{ airQuality.ozoneClass }} aqiBorder" >
-					<div >Ozone</div>
-					<div >&nbsp;</div>
-					<div >Unavailable</div>
+					<table>
+					<tr>
+						<td><span class="aqiNumber">&nbsp;</span></td>
+						<td><div class="aqiTitle">Ozone</div><div class="aqiDescription">Unavailable</div></td>
+					</tr>
+					</table>
 				</div>
 				
 				<div *ngIf="airQuality.particulateMatterAQI" class="{{ airQuality.pmClass }} aqiBorder" >
-					<div>PM2.5</div>
-					<div>{{ airQuality.particulateMatterAQI | number:'1.0' }}</div>
-					<div >{{ airQuality.pmDescription }}</div>
+					<table>
+					<tr>
+						<td><span class="aqiNumber">{{ airQuality.particulateMatterAQI | number:'1.0' }}</span></td>
+						<td><div class="aqiTitle">PM2.5</div><div class="aqiDescription">{{ airQuality.pmDescription }}</div></td>
+					</tr>
+					</table>
 				</div>
 
 				<div *ngIf="!airQuality.particulateMatterAQI" class="{{ airQuality.pmClass }} aqiBorder" >
-					<div>PM2.5</div>
-					<div>&nbsp;</div>
-					<div>Unavailable</div>
+					<table>
+					<tr>
+						<td><span class="aqiNumber">&nbsp;</span></td>
+						<td><div class="aqiTitle">PM2.5</div><div class="aqiDescription">Unavailable</div></td>
+					</tr>
+					</table>
 				</div>
 				
 			</div>

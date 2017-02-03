@@ -9,6 +9,7 @@
  
  .aqiBorder {
 	border-radius: 0.5em;
+	margin-bottom: 0.1em;
   }
   
  .maroon{
@@ -16,6 +17,14 @@
 	color:#FFF
  }
   
- .smallText {
-    font-size:xx-small;
+ .aqiNumber{
+	font-size:xx-large;
+	margin-right:0.25em;
+ }
+ .aqiTitle{
+	font-size:large;
+ }
+  .aqiDescription{
+	font-size:small;
+	font-style: italic;
  }

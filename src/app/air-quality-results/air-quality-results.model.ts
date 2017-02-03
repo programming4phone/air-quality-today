@@ -44,14 +44,14 @@ export class AirQuality {
 	
 	private getAQIClass(aqi: number) : string{
 		if(aqi){
-			if(aqi < 51) return 'green column padded middle aligned centered';
-			if(aqi < 101) return 'yellow column padded middle aligned centered';
-			if(aqi < 151) return 'orange column padded middle aligned centered';
-			if(aqi < 201) return 'red column padded middle aligned centered';
-			if(aqi < 301) return 'purple column padded middle aligned centered';
-			if(aqi > 300) return 'maroon column padded middle aligned centered';
+			if(aqi < 51) return 'green sixteen wide column padded middle aligned centered';
+			if(aqi < 101) return 'yellow sixteen wide column padded middle aligned centered';
+			if(aqi < 151) return 'orange sixteen wide column padded middle aligned centered';
+			if(aqi < 201) return 'red sixteen wide column padded middle aligned centered';
+			if(aqi < 301) return 'purple sixteen wide column padded middle aligned centered';
+			if(aqi > 300) return 'maroon sixteen wide column padded middle aligned centered';
 		}
-		return 'grey column padded middle aligned centered';
+		return 'grey sixteen wide column padded middle aligned centered';
 	}
 
 	private ozoneAQIClass() : string{
