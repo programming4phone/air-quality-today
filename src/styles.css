@@ -10,3 +10,12 @@
  .aqiBorder {
 	border-radius: 0.5em;
   }
+  
+ .maroon{
+	background-color:#7e0023!important;
+	color:#FFF
+ }
+  
+ .smallText {
+    font-size:xx-small;
+ }

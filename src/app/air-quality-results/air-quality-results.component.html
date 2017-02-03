@@ -23,7 +23,7 @@
 				<div *ngIf="airQuality.particulateMatterAQI" class="{{ airQuality.pmClass }} aqiBorder" >
 					<div>PM2.5</div>
 					<div>{{ airQuality.particulateMatterAQI | number:'1.0' }}</div>
-					<div>{{ airQuality.pmDescription }}</div>
+					<div >{{ airQuality.pmDescription }}</div>
 				</div>
 
 				<div *ngIf="!airQuality.particulateMatterAQI" class="{{ airQuality.pmClass }} aqiBorder" >

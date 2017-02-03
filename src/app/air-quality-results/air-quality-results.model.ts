@@ -48,8 +48,8 @@ export class AirQuality {
 			if(aqi < 101) return 'yellow column padded middle aligned centered';
 			if(aqi < 151) return 'orange column padded middle aligned centered';
 			if(aqi < 201) return 'red column padded middle aligned centered';
-			if(aqi < 301) return 'brown column padded middle aligned centered';
-			if(aqi > 300) return 'black column padded middle aligned centered';
+			if(aqi < 301) return 'purple column padded middle aligned centered';
+			if(aqi > 300) return 'maroon column padded middle aligned centered';
 		}
 		return 'grey column padded middle aligned centered';
 	}
