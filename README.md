@@ -4,12 +4,16 @@ Air Quality Today is an Angular 2 application that that accesses air quality mea
 
 Just enter your 5-digit zip code to retrieve the most recent air quality reading for your location. A map is displayed showing the location of the closest observation station.
 
-The app is currently deployed on [Heroku] (https://air-quality-today-0100.herokuapp.com).
+The app interacts with with a micro service that pulls information from the EPA and converts the contents to JSON with CORS headers. For details see [https://github.com/programming4phone/airnow.collector](https://github.com/programming4phone/airnow.collector).
+
+The app is currently deployed on [www.programming4phone.com](http://www.programming4phone.com/airqualitytoday/index.html).
 
 This app was originally an [Android app] (https://play.google.com/store/apps/details?id=com.programming4phone.air.quality) and was converted to Angular 2 to allow device independence.
 
 ## Development stack
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24. The code base also uses Semantic UI 2.2 for styling HTML markup.
+
+The app displays a map showing the location of the closest observation station, which is rendered by [angular2-google-maps](https://angular-maps.com/). A Google Maps API key is needed to use this component.
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

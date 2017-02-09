@@ -5,6 +5,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { APP_BASE_HREF } from '@angular/common'; 
+
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { AirNowService } from './services/airnow.service';
@@ -39,11 +41,12 @@ const routes: Routes = [
     HttpModule,
 	RouterModule.forRoot(routes),
 	AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDvcmGvinGgybxfb6CxlI-EfljbkiAUbew'
+      apiKey: 'your-google-maps-api-key-here'
     })
   ],
   providers: [
 		{ provide: LocationStrategy, useClass: HashLocationStrategy }, 
+		{ provide: APP_BASE_HREF, useValue: './' },
 		{ provide: AirNowService, useClass: AirNowService }
 		],
   bootstrap: [AppComponent]
